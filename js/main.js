@@ -2,7 +2,7 @@ $(function () {
     var _picture = [
         { url: "images/妍狄.JPG" },
         { url: "images/宜君.JPG" },
-        { url: "images/承恩.JPG" },
+        { url: "images/承恩.jpg" },
         { url: "images/思庭.JPG" },
         { url: "images/美玲.JPG" },
         { url: "images/美恩.JPG" },
@@ -43,7 +43,7 @@ $(function () {
       function init() {
          _oldPictureCount = _picture.length ;
           eventBind();
-          $(".card_count").text("已抽" + _picture.length +"/" + _oldPictureCount + "張卡");
+          $(".card_count").text("剩餘" + _picture.length +"/" + _oldPictureCount + "張卡");
       }
   
       function drawCard() {
@@ -65,7 +65,7 @@ $(function () {
           $("img").attr("src", card.url);
           _draw.push(card);
           _picture.splice(cardNum, 1);
-          $(".card_count").text("已抽" + _picture.length +"/" + _oldPictureCount + "張卡");
+          $(".card_count").text("剩餘" + _picture.length +"/" + _oldPictureCount + "張卡");
           $(".already_card").text("以抽" + _draw.length + "張卡");
         }
         
@@ -75,7 +75,7 @@ $(function () {
           }
           _draw.forEach((e) => _picture.push(e));
           _draw = [];
-          $(".card_count").text("已抽" + _picture.length +"/" + _oldPictureCount + "張卡");
+          $(".card_count").text("剩餘" + _picture.length +"/" + _oldPictureCount + "張卡");
           $(".already_card").text("以抽" + _draw.length + "張卡");
         }
   
