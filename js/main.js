@@ -1,22 +1,21 @@
 $(function () {
     var _picture = [
-        { url: "images/妍狄.JPG" },
-        { url: "images/宜君.JPG" },
-        { url: "images/承恩.jpg" },
-        { url: "images/思庭.JPG" },
-        { url: "images/美玲.JPG" },
-        { url: "images/美恩.JPG" },
-        { url: "images/迦康.JPG" },
-        { url: "images/煉英.JPG" },
-        { url: "images/儀君.JPG" },
-        { url: "images/佩青.JPG" },
-        { url: "images/美玲.JPG" },
-        { url: 'images/文楷-果實.JPG',name:'文楷-果實'},
+        { url: "images/妍狄.JPG",name:'妍狄' },
+        { url: "images/宜君.JPG",name:'宜君' },
+        { url: "images/承恩.jpg",name:'承恩' },
+        { url: "images/思庭.JPG",name:'思庭' },
+        { url: "images/美玲.JPG",name:'美玲' },
+        { url: "images/美恩.JPG",name:'美恩' },
+        { url: "images/迦康.JPG",name:'迦康' },
+        { url: "images/煉英.JPG",name:'煉英' },
+        { url: "images/儀君.JPG",name:'儀君' },
+        { url: "images/佩青.JPG",name:'佩青' },
+        { url: 'images/文楷-果實.JPG',name:'文楷-多結果子'},
         { url: 'images/文楷-河岸.JPG',name:'文楷-河岸'},
-        { url: 'images/文楷-星空.JPG',name:'文楷-星空'},
-        { url: 'images/念佳-小天使.JPG',name:'念佳-小天使'},
-        { url: 'images/念佳-小星星.JPG',name:'念佳-小星星'},
-        { url: 'images/念佳-小燈籠.JPG',name:'念佳-小燈籠'}
+        { url: 'images/文楷-星空.JPG',name:'文楷-好運繁星'},
+        { url: 'images/念佳-小天使.JPG',name:'念佳-有天使在幫助你'},
+        { url: 'images/念佳-小星星.JPG',name:'念佳-你是快樂的星星'},
+        { url: 'images/念佳-小燈籠.JPG',name:'念佳-心存希望'}
       ];
       var _oldPictureCount = 0;
       // var _picture = [
@@ -28,7 +27,7 @@ $(function () {
           $(".card .image .status ").show();
           $(".card .image .info ").hide();
           $(".card.is-loading .image ").height(400);
-          
+          $(".creater").hide();
           setTimeout(() => {
               $(".card .image .status ").hide();
               $(".card.is-loading .image ").height(0);
@@ -65,20 +64,13 @@ $(function () {
           $("img").attr("src", card.url);
           _draw.push(card);
           _picture.splice(cardNum, 1);
+          $(".creater").html("<br/>作者：" + card.name);
+          $(".creater").show();
           $(".card_count").text("剩餘" + _picture.length +"/" + _oldPictureCount + "張卡");
           $(".already_card").text("以抽" + _draw.length + "張卡");
         }
         
-        function recovery() {
-          if (_draw.length < 1) {
-            return;
-          }
-          _draw.forEach((e) => _picture.push(e));
-          _draw = [];
-          $(".card_count").text("剩餘" + _picture.length +"/" + _oldPictureCount + "張卡");
-          $(".already_card").text("以抽" + _draw.length + "張卡");
-        }
-  
+      
         
         buttons.forEach(btn => {
           btn.addEventListener('click', function(e) {
